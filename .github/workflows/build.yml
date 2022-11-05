@@ -8,4 +8,4 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@main
-      - run: bash ./build.sh
+      - run: ./build.sh
