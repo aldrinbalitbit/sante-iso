@@ -48,19 +48,12 @@ ln -sf lib64 usr/local/lib
 cd ..
 
 # Source build for rootfs
-# Linux API Headers
-wget -qO- https://mirrors.edge.kernel.org/pub/linux/kernel/v6.x/linux-6.0.7.tar.gz | tar -xzpf -
-cd linux-6.0.7
-make mrproper
-make INSTALL_HDR_PATH=$HOME/sante-iso/rootfs/usr headers_install
-cd ..
 # GNU C Library
 sudo apt-get install bash binutils coreutils diffutils gawk gettext \
 		     grep perl sed texinfo
 wget -qO- https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.gz | tar -xzpf -
 cd glibc-2.36
-configure_cmd --with-headers=/usr/include \
-	      --enable-multi-arch \
+configure_cmd --enable-multi-arch \
 	      --disable-werror \
 	      CFLAGS="${CFLAGS}"
 make_cmd install
