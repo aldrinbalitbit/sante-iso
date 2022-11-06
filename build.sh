@@ -50,8 +50,6 @@ cd build
 	     --libexecdir=/usr/lib \
 	     --includedir=/usr/include \
              --disable-werror \
-	     CC="gcc -m64" \
-	     CXX="g++ -m64" \
 	     CFLAGS="-O2" \
 	     CXXFLAGS="-O2" \
 	     CFLAGS="${CFLAGS}"
