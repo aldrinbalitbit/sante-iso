@@ -47,6 +47,6 @@ cd ..
 # GNU C Library
 wget -qO- https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.gz | tar -xzpf -
 cd glibc-2.36
-configure_cmd CFLAGS="-w -g -O2"
+configure_cmd CFLAGS="${CFLAGS}"
 make_cmd install
 cd ..
