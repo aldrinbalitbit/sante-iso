@@ -52,7 +52,7 @@ cd ..
 wget -qO- https://mirrors.edge.kernel.org/pub/linux/kernel/v6.x/linux-6.0.7.tar.gz | tar -xzpf -
 cd linux-6.0.7
 make mrproper
-make INSTALL_HDR_PATH=/usr headers_install DESTDIR=$HOME/sante-iso/rootfs
+make INSTALL_HDR_PATH=$HOME/sante-iso/rootfs/usr headers_install
 cd ..
 # GNU C Library
 sudo apt-get install bash binutils coreutils diffutils gawk gettext \
