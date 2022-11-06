@@ -10,9 +10,11 @@ thank_you () {
 
 configure_cmd () {
 	./configure --prefix=/usr \
-		    --host=x86_64-sante-gnu \
-		    --build=x86_64-pc-linux-gnu \
-		    $@
+		     --host=x86_64-sante-gnu \
+		     --build=x86_64-pc-linux-gnu \
+		     --sbindir=/usr/bin\
+		     --libexecdir=/usr/lib \
+		     $@
 }
 
 make_cmd () {
@@ -25,10 +27,10 @@ sudo apt-get update -qqy
 sudo apt-get install gcc g++ make
 
 # Create rootfs directory
-sudo mkdir /rootfs
+mkdir rootfs
 
 # Create root file system directories and merge /usr
-cd /rootfs
+cd rootfs
 mkdir -p {boot,home,mnt,opt,srv,etc,var/tmp,tmp,run,dev,sys,proc,root,usr/{bin,lib,share,src,local/{bin,lib}}
 ln -sf usr/bin bin
 ln -sf usr/bin sbin
@@ -38,7 +40,7 @@ ln -sf sbin usr/bin
 ln -sf lib64 usr/lib
 ln -sf sbin usr/local/bin
 ln -sf lib64 usr/local/lib
-cd $HOME/sante-iso
+cd ..
 
 # Source build for rootfs
 # GNU C Library
