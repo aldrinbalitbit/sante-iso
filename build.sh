@@ -10,12 +10,12 @@ thank_you () {
 
 configure_cmd () {
 	./configure --prefix=/usr \
-		     --host=x86_64-sante-gnu \
-		     --build=x86_64-pc-linux-gnu \
-		     --sbindir=/usr/bin\
-		     --libexecdir=/usr/lib \
-		     --includedir=/usr/include
-		     $@
+		    --target=x86_64-sante-gnu \
+		    --build=x86_64-pc-linux-gnu \
+		    --sbindir=/usr/bin\
+		    --libexecdir=/usr/lib \
+		    --includedir=/usr/include \
+		    $@
 }
 
 make_cmd () {
