@@ -8,13 +8,6 @@ thank_you () {
 	echo "Thanks for building Sante ISO!"
 }
 
-configure_cmd () {
-	mkdir build
-	cd build
-	../configure $@
-	cd ..
-}
-
 make_cmd () {
 	make -C build
 	make -C build $@ DESTDIR=$HOME/sante-iso/rootfs
@@ -47,19 +40,22 @@ sudo apt-get install bash binutils coreutils diffutils gawk gettext \
 		     grep perl sed texinfo
 wget -qO- https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.gz | tar -xzpf -
 cd glibc-2.36
-configure_cmd --prefix=/usr \
-              --target=x86_64-sante-gnu \
-              --host=x86_64-linux-gnu \
-              --build=x86_64-pc-linux-gnu \
-              --sbindir=/usr/bin \
-	      --libexecdir=/usr/lib \
-	      --includedir=/usr/include \
-              --disable-werror \
-	      CC="gcc -m64" \
-	      CXX="g++ -m64" \
-	      CFLAGS="-O2" \
-	      CXXFLAGS="-O2" \
-	      CFLAGS="${CFLAGS}"
+mkdir build
+cd build
+../configure --prefix=/usr \
+             --target=x86_64-sante-gnu \
+             --host=x86_64-linux-gnu \
+             --build=x86_64-pc-linux-gnu \
+             --sbindir=/usr/bin \
+	     --libexecdir=/usr/lib \
+	     --includedir=/usr/include \
+             --disable-werror \
+	     CC="gcc -m64" \
+	     CXX="g++ -m64" \
+	     CFLAGS="-O2" \
+	     CXXFLAGS="-O2" \
+	     CFLAGS="${CFLAGS}"
+cd ..
 make_cmd install
 cd ..
 rm -rf glibc-2.36
