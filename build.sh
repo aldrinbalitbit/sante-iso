@@ -25,7 +25,7 @@ sudo apt-get update -qqy
 sudo apt-get install gcc g++ make
 
 # Create rootfs directory
-mkdir /rootfs
+sudo mkdir /rootfs
 
 # Create root file system directories and merge /usr
 cd /rootfs
