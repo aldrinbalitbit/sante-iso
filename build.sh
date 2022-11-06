@@ -22,8 +22,8 @@ configure_cmd () {
 }
 
 make_cmd () {
-	make -j$(nproc) -C build
-	make -j$(nproc) -C build $@ DESTDIR=/rootfs
+	make -C build
+	make -C build $@ DESTDIR=$HOME/sante-iso/rootfs
 }
 
 # Build dependencies
@@ -40,6 +40,7 @@ ln -sf usr/bin bin
 ln -sf usr/bin sbin
 ln -sf usr/lib lib
 ln -sf usr/lib lib64
+ln -sf usr/lib libexec
 ln -sf sbin usr/bin
 ln -sf lib64 usr/lib
 ln -sf sbin usr/local/bin
