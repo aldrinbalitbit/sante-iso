@@ -53,6 +53,10 @@ sudo apt-get install bash binutils coreutils diffutils gawk gettext \
 		     grep perl sed texinfo
 wget -qO- https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.gz | tar -xzpf -
 cd glibc-2.36
-configure_cmd CFLAGS="${CFLAGS}"
+configure_cmd --with-headers=/usr/include \
+	      --enable-kernel=6.0 \
+	      --enable-multi-arch \
+	      --disable-werror \
+	      CFLAGS="${CFLAGS}"
 make_cmd install
 cd ..
