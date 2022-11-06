@@ -13,6 +13,7 @@ configure_cmd () {
 	cd build
 	../configure --prefix=/usr \
 		     --target=x86_64-sante-gnu \
+		     --host=x86_64-linux-gnu \
 		     --build=x86_64-pc-linux-gnu \
 		     --sbindir=/usr/bin\
 		     --libexecdir=/usr/lib \
@@ -53,8 +54,11 @@ sudo apt-get install bash binutils coreutils diffutils gawk gettext \
 		     grep perl sed texinfo
 wget -qO- https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.gz | tar -xzpf -
 cd glibc-2.36
-configure_cmd --enable-multi-arch \
-	      --disable-werror \
+configure_cmd --disable-werror \
+	      CC="gcc -m64" \
+	      CXX="g++ -m64" \
+	      CFLAGS="-O2" \
+	      CXXFLAGS="-O2" \
 	      CFLAGS="${CFLAGS}"
 make_cmd install
 cd ..
