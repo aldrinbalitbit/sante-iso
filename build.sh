@@ -15,12 +15,12 @@ configure_cmd () {
 		    --sbindir=/usr/bin\
 		    --libexecdir=/usr/lib \
 		    --includedir=/usr/include \
-		    $@
+		    $1
 }
 
 make_cmd () {
 	make -j$(nproc)
-	make -j$(nproc) $1 DESTDIR=/rootfs
+	make -j$(nproc) $@ DESTDIR=/rootfs
 }
 
 # Build dependencies
