@@ -9,18 +9,21 @@ thank_you () {
 }
 
 configure_cmd () {
-	./configure --prefix=/usr \
-		    --target=x86_64-sante-gnu \
-		    --build=x86_64-pc-linux-gnu \
-		    --sbindir=/usr/bin\
-		    --libexecdir=/usr/lib \
-		    --includedir=/usr/include \
-		    $1
+	mkdir build
+	cd build
+	../configure --prefix=/usr \
+		     --target=x86_64-sante-gnu \
+		     --build=x86_64-pc-linux-gnu \
+		     --sbindir=/usr/bin\
+		     --libexecdir=/usr/lib \
+		     --includedir=/usr/include \
+		     $@
+	cd ..
 }
 
 make_cmd () {
-	make -j$(nproc)
-	make -j$(nproc) $@ DESTDIR=/rootfs
+	make -j$(nproc) -C build
+	make -j$(nproc) -C build $@ DESTDIR=/rootfs
 }
 
 # Build dependencies
