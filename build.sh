@@ -14,6 +14,7 @@ configure_cmd () {
 		     --build=x86_64-pc-linux-gnu \
 		     --sbindir=/usr/bin\
 		     --libexecdir=/usr/lib \
+		     --includedir=/usr/include
 		     $@
 }
 
@@ -44,7 +45,7 @@ cd ..
 
 # Source build for rootfs
 # GNU C Library
-wget -qO- https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.gz | tar -xJpf -
+wget -qO- https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.gz | tar -xzpf -
 cd glibc-2.36
 configure_cmd CFLAGS="-w -g -O2"
 make_cmd install
