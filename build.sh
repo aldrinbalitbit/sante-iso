@@ -31,7 +31,7 @@ mkdir rootfs
 
 # Create root file system directories and merge /usr
 cd rootfs
-mkdir -p {boot,home,mnt,opt,srv,etc,var/tmp,tmp,run,dev,sys,proc,root,usr/{bin,lib,share,src,local/{bin,lib}}
+mkdir -p {boot,home,mnt,opt,srv,etc,var/tmp,tmp,run,dev,sys,proc,root,usr/{bin,lib,share,src,local/{bin,lib}}}
 ln -sf usr/bin bin
 ln -sf usr/bin sbin
 ln -sf usr/lib lib
