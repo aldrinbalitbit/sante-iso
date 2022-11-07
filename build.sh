@@ -31,7 +31,7 @@ make_cmd () {
 
 # Build dependencies
 sudo apt-get update -qqy
-sudo apt-get install gcc g++ make
+sudo apt-get install bison flex gcc g++ make
 
 # Create rootfs directory
 mkdir rootfs
