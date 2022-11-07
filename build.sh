@@ -52,7 +52,6 @@ cd build
              --disable-werror \
 	     CFLAGS="-O2" \
 	     CXXFLAGS="-O2" \
-	     CFLAGS="${CFLAGS}"
 cd ..
 make_cmd install
 cd ..
