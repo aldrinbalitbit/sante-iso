@@ -14,18 +14,19 @@ configure_cmd () {
 	../configure --prefix=/usr \
 		     --target=x86_64-sante-gnu \
 		     --host=x86_64-linux-gnu \
-		     --build=x86_64-pc-linux-gnu \
+		     --build=x86_64-linux-gnu \
 		     --sbindir=/usr/bin \
 		     --libexecdir=/usr/lib \
 		     --includedir=/usr/include \
 		     --disable-werror \
+		     --silent \
 		     $@
 	cd ..
 }
 
 make_cmd () {
-	make -C build
-	make -C build $@ DESTDIR=$HOME/sante-iso/rootfs
+	make -C build --silent
+	make -C build --silent $@ DESTDIR=$HOME/sante-iso/rootfs
 }
 
 # Build dependencies
