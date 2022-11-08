@@ -55,8 +55,7 @@ sudo apt-get install bash binutils coreutils diffutils gawk gettext \
 		     grep perl sed texinfo
 wget -qO- https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.gz | tar -xzpf -
 cd glibc-2.36
-configure_cmd --enable-multi-arch \
-	      --enable-stack-protector=strong \
+configure_cmd --enable-stack-protector=strong \
               CFLAGS="-O2" \
 	      CXXFLAGS="-O2"
 echo "slibdir=/usr/lib" >> build/configparms
