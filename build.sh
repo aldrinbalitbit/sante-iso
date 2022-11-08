@@ -18,7 +18,6 @@ configure_cmd () {
 		     --sbindir=/usr/bin \
 		     --libexecdir=/usr/lib \
 		     --includedir=/usr/include \
-		     --disable-werror \
 		     --silent \
 		     $@
 	cd ..
@@ -58,7 +57,6 @@ wget -qO- https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.gz | tar -xzpf -
 cd glibc-2.36
 configure_cmd --enable-multi-arch \
 	      --enable-stack-protector=strong \
-	      --enable-systemtap \
               CFLAGS="-O2" \
 	      CXXFLAGS="-O2"
 echo "slibdir=/usr/lib" >> build/configparms
