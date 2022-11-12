@@ -64,6 +64,6 @@ echo "rtlddir=/usr/lib" >> build/configparms
 echo "sbindir=/usr/bin" >> build/configparms
 echo "rootsbindir=/usr/bin" >> build/configparms
 make info -C build
-make_cmd install
+make -O -C build
 cd ..
 rm -rf glibc-2.36
