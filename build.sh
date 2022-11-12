@@ -55,8 +55,11 @@ sudo apt-get install bash binutils coreutils diffutils gawk gettext \
 		     grep perl sed texinfo
 wget -qO- https://ftp.gnu.org/gnu/glibc/glibc-2.36.tar.gz | tar -xzpf -
 cd glibc-2.36
-configure_cmd --enable-multi-arch \
-	      --enable-stack-protector=strong \
+configure_cmd --enable-bind-now \
+              --enable-cet \
+	      --enable-multi-arch \
+	      --enable-stack-protector=all \
+	      --disable-crypt \
               CFLAGS="-O2" \
 	      CXXFLAGS="-O2"
 echo "slibdir=/usr/lib" >> build/configparms
@@ -65,6 +68,6 @@ echo "sbindir=/usr/bin" >> build/configparms
 echo "rootsbindir=/usr/bin" >> build/configparms
 make info -C build --silent
 make -O -C build --silent
-make install -C build --silent
+make install -C build --silent DESTDIR=$HOME/sante-iso/rootfs
 cd ..
 rm -rf glibc-2.36
