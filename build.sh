@@ -63,7 +63,8 @@ echo "slibdir=/usr/lib" >> build/configparms
 echo "rtlddir=/usr/lib" >> build/configparms
 echo "sbindir=/usr/bin" >> build/configparms
 echo "rootsbindir=/usr/bin" >> build/configparms
-make info -C build
-make -O -C build
+make info -C build --silent
+make -O -C build --silent
+make install -C build --silent
 cd ..
 rm -rf glibc-2.36
